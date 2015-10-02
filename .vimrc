@@ -41,7 +41,9 @@ set nocompatible
 	Plugin 'altercation/vim-colors-solarized'
 	Plugin 'ctrlpvim/ctrlp.vim'
 	Plugin 'bling/vim-bufferline'
-
+	
+	Plugin 'fatih/vim-go'
+	
 	" All of your Plugins must be added before the following line
 	call vundle#end()            " required for vundle
 	filetype plugin indent on    " required for vundle
@@ -236,7 +238,7 @@ set nocompatible
         if isdirectory(expand("~/.vim/bundle/nerdtree"))
             map <C-e> <plug>NERDTreeTabsToggle<CR>
             map <leader>e :NERDTreeFind<CR>
-            nmap <leader>nt :NERDTreeFind<CR>
+            nmap <leader>nt :NERDTreeToggle<CR>
 
             let NERDTreeShowBookmarks=1
             let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
@@ -305,7 +307,18 @@ set nocompatible
 			let g:airline_right_sep='‹' " Slightly fancier than '<'
 		endif
     " }
-
+	" GO VIM {
+		let g:go_highlight_functions = 1
+		let g:go_highlight_methods = 1
+		let g:go_highlight_structs = 1
+		let g:go_highlight_operators = 1
+		let g:go_highlight_build_constraints = 1
+		
+		au FileType go nmap <leader>r <Plug>(go-run)
+		au FileType go nmap <leader>b <Plug>(go-build)
+		au FileType go nmap <leader>t <Plug>(go-test)
+		au FileType go nmap <leader>c <Plug>(go-coverage)
+	" }
 " }
 
 
