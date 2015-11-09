@@ -57,7 +57,7 @@
           set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
         endif
     " }
-    
+
     " Arrow Key Fix {
         " https://github.com/spf13/spf13-vim/issues/780
         if &term[:4] == "xterm" || &term[:5] == 'screen' || &term[:3] == 'rxvt'
@@ -73,37 +73,37 @@
 	" set the runtime path to include Vundle and initialize
 	set rtp+=~/.vim/bundle/Vundle.vim
 	call vundle#begin()
-	
-	" let Vundle manage Vundle, required
-	Plugin 'VundleVim/Vundle.vim'
 
-    " General plugins
-	Plugin 'scrooloose/nerdtree'
-	Plugin 'bling/vim-airline'
-	Plugin 'altercation/vim-colors-solarized'
-	Plugin 'ctrlpvim/ctrlp.vim'
-	Plugin 'bling/vim-bufferline'
-	Plugin 'powerline/fonts'
-	Plugin 'nathanaelkane/vim-indent-guides'
-	Plugin 'scrooloose/syntastic'
-    Plugin 'tpope/vim-fugitive'
-	
-    " Auto completion
+  " let Vundle manage Vundle, required
+  Plugin 'VundleVim/Vundle.vim'
+
+  " General plugins
+  Plugin 'scrooloose/nerdtree'
+  Plugin 'bling/vim-airline'
+  Plugin 'altercation/vim-colors-solarized'
+  Plugin 'ctrlpvim/ctrlp.vim'
+  Plugin 'bling/vim-bufferline'
+  Plugin 'powerline/fonts'
+  Plugin 'nathanaelkane/vim-indent-guides'
+  Plugin 'scrooloose/syntastic'
+  Plugin 'tpope/vim-fugitive'
+
+  " Auto completion
 	Plugin 'Shougo/neocomplete.vim.git'
 	Plugin 'Shougo/neosnippet'
 	Plugin 'Shougo/neosnippet-snippets'
 	Plugin 'honza/vim-snippets'
-	
+
     " Programming
 	Plugin 'elzr/vim-json'
-    Plugin 'pangloss/vim-javascript'
+  Plugin 'pangloss/vim-javascript'
 	Plugin 'amirh/HTML-AutoCloseTag'
 	Plugin 'hail2u/vim-css3-syntax'
 	Plugin 'rust-lang/rust.vim'
 	Plugin 'tpope/vim-markdown'
 	Plugin 'cespare/vim-toml'
 	Plugin 'fatih/vim-go'
-	
+
 	" All of your Plugins must be added before the following line
 	call vundle#end()            " required for vundle
 	filetype plugin indent on    " required for vundle
@@ -146,7 +146,7 @@
 
 	" Always switch to the current file directory
 	autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
-	
+
 
     set autowrite                       " Automatically write a file when leaving a modified buffer
     set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
@@ -199,7 +199,7 @@
         set statusline=%<%f\                     " Filename
         set statusline+=%w%h%m%r                 " Options
         set statusline+=%{fugitive#statusline()} " Git Hotness
-        
+
         set statusline+=\ [%{&ff}/%Y]            " Filetype
         set statusline+=\ [%{getcwd()}]          " Current dir
         set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
@@ -220,7 +220,7 @@
     set scrolljump=5                " Lines to scroll when cursor leaves screen
     set scrolloff=3                 " Minimum lines to keep above and below cursor
     set list
-    set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
+    set listchars=tab:â€º\ ,trail:â€¢,extends:#,nbsp:. " Highlight problematic whitespace
 
 " }
 
@@ -238,7 +238,7 @@
     "set matchpairs+=<:>             " Match, to be used with %
     set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
     "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
-    
+
 	" Remove trailing whitespaces and ^M chars
     autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> call StripTrailingWhitespace()
     "autocmd FileType go autocmd BufWritePre <buffer> Fmt
@@ -251,7 +251,7 @@
 
 " Key (re)Mappings {
 
-    
+
     " Easier moving in tabs and windows
     " The lines conflict with the default digraph mapping of <C-K>
 	map <C-J> <C-W>j<C-W>_
@@ -262,7 +262,7 @@
     " Wrapped lines goes down/up to next row, rather than next line in file.
     noremap j gj
     noremap k gk
-     
+
     " Code folding options
     nmap <leader>f0 :set foldlevel=0<CR>
     nmap <leader>f1 :set foldlevel=1<CR>
@@ -274,9 +274,9 @@
     nmap <leader>f7 :set foldlevel=7<CR>
     nmap <leader>f8 :set foldlevel=8<CR>
     nmap <leader>f9 :set foldlevel=9<CR>
-	
-	
-	
+
+
+
 	" Mappings to access buffers by number
 	nnoremap <Leader>l :ls<CR>
 	nnoremap <Leader>bd :bd<CR>
@@ -294,7 +294,7 @@
     " Most prefer to toggle search highlighting rather than clear the current
     " search results
     nmap <silent> <leader>/ :set invhlsearch<CR>
-    
+
 
 
     " Find merge conflict markers
@@ -344,7 +344,7 @@
 
 " }
 
-" Plugins {    
+" Plugins {
 
     " AutoCloseTag {
         " Make it so AutoCloseTag works for xml and xhtml files as well
@@ -384,7 +384,7 @@
             nnoremap <silent> <leader>gi :Git add -p %<CR>
             nnoremap <silent> <leader>gg :SignifyToggle<CR>
         endif
-    "}        
+    "}
 
     " indent_guides {
         if isdirectory(expand("~/.vim/bundle/vim-indent-guides/"))
@@ -411,8 +411,8 @@
             endif
             if !exists('g:airline_powerline_fonts')
                 " Use the default set of separators with a few customizations
-                let g:airline_left_sep='›'  " Slightly fancier than '>'
-                let g:airline_right_sep='‹' " Slightly fancier than '<'
+                let g:airline_left_sep='â€º'  " Slightly fancier than '>'
+                let g:airline_right_sep='â€¹' " Slightly fancier than '<'
             endif
         endif
     " }
@@ -431,7 +431,7 @@
 			set guifont=Andale\ Mono\ Regular:h12,Menlo\ Regular:h11,Consolas\ Regular:h12,Courier\ New\ Regular:h14
 		elseif WINDOWS() && has("gui_running")
 			set guifont=Andale_Mono:h10,Menlo:h10,Consolas:h10,Courier_New:h10
-		endif        
+		endif
     else
         if &term == 'xterm' || &term == 'screen'
             set t_Co=256            " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
@@ -457,7 +457,7 @@
         endif
 
 
-     
+
         let common_dir = parent . '/.' . prefix
 
         for [dirname, settingname] in items(dir_list)
@@ -528,8 +528,8 @@
 
     command! -complete=file -nargs=+ Shell call s:RunShellCommand(<q-args>)
     " e.g. Grep current file for <search_term>: Shell grep -Hn <search_term> %
-    " }    
-     
+    " }
+
     function! s:ExpandFilenameAndExecute(command, file)
         execute a:command . " " . expand(a:file, ":p")
     endfunction
