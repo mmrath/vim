@@ -77,6 +77,7 @@
 	" let Vundle manage Vundle, required
 	Plugin 'VundleVim/Vundle.vim'
 
+    " General plugins
 	Plugin 'scrooloose/nerdtree'
 	Plugin 'bling/vim-airline'
 	Plugin 'altercation/vim-colors-solarized'
@@ -84,24 +85,23 @@
 	Plugin 'bling/vim-bufferline'
 	Plugin 'powerline/fonts'
 	Plugin 'nathanaelkane/vim-indent-guides'
-	
 	Plugin 'scrooloose/syntastic'
     Plugin 'tpope/vim-fugitive'
 	
+    " Auto completion
 	Plugin 'Shougo/neocomplete.vim.git'
 	Plugin 'Shougo/neosnippet'
 	Plugin 'Shougo/neosnippet-snippets'
 	Plugin 'honza/vim-snippets'
 	
+    " Programming
 	Plugin 'elzr/vim-json'
     Plugin 'pangloss/vim-javascript'
 	Plugin 'amirh/HTML-AutoCloseTag'
 	Plugin 'hail2u/vim-css3-syntax'
-	Plugin 'gorodinskiy/vim-coloresque'
-	Plugin 'tpope/vim-haml'	
 	Plugin 'rust-lang/rust.vim'
 	Plugin 'tpope/vim-markdown'
-	Plugin 'cespare/vim-toml'	
+	Plugin 'cespare/vim-toml'
 	Plugin 'fatih/vim-go'
 	
 	" All of your Plugins must be added before the following line
