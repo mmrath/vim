@@ -75,18 +75,18 @@
 	call vundle#begin()
 
   " let Vundle manage Vundle, required
-  Plugin 'VundleVim/Vundle.vim'
+	Plugin 'VundleVim/Vundle.vim'
 
   " General plugins
-  Plugin 'scrooloose/nerdtree'
-  Plugin 'bling/vim-airline'
-  Plugin 'altercation/vim-colors-solarized'
-  Plugin 'ctrlpvim/ctrlp.vim'
-  Plugin 'bling/vim-bufferline'
-  Plugin 'powerline/fonts'
-  Plugin 'nathanaelkane/vim-indent-guides'
-  Plugin 'scrooloose/syntastic'
-  Plugin 'tpope/vim-fugitive'
+	Plugin 'scrooloose/nerdtree'
+	Plugin 'bling/vim-airline'
+	Plugin 'altercation/vim-colors-solarized'
+	Plugin 'ctrlpvim/ctrlp.vim'
+	Plugin 'bling/vim-bufferline'
+	Plugin 'powerline/fonts'
+	Plugin 'nathanaelkane/vim-indent-guides'
+	Plugin 'scrooloose/syntastic'
+	Plugin 'tpope/vim-fugitive'
 
   " Auto completion
 	Plugin 'Shougo/neocomplete.vim.git'
@@ -96,7 +96,7 @@
 
     " Programming
 	Plugin 'elzr/vim-json'
-  Plugin 'pangloss/vim-javascript'
+	Plugin 'pangloss/vim-javascript'
 	Plugin 'amirh/HTML-AutoCloseTag'
 	Plugin 'hail2u/vim-css3-syntax'
 	Plugin 'rust-lang/rust.vim'
@@ -104,7 +104,7 @@
 	Plugin 'cespare/vim-toml'
 	Plugin 'fatih/vim-go'
 
-	" All of your Plugins must be added before the following line
+	"Plugins must be added before the following line
 	call vundle#end()            " required for vundle
 	filetype plugin indent on    " required for vundle
 " }
@@ -225,7 +225,7 @@
 " }
 
 " Formatting {
-
+    set nofoldenable                " Do not enable folding
     set nowrap                      " Do not wrap long lines
     set autoindent                  " Indent at the same level of the previous line
     set shiftwidth=4                " Use indents of 4 spaces
@@ -344,7 +344,7 @@
 
 " }
 
-" Plugins {
+"   Plugins {
 
     " AutoCloseTag {
         " Make it so AutoCloseTag works for xml and xhtml files as well
