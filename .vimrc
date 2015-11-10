@@ -103,6 +103,7 @@
 	Plugin 'tpope/vim-markdown'
 	Plugin 'cespare/vim-toml'
 	Plugin 'fatih/vim-go'
+    Plugin 'Chiel92/vim-autoformat'
 
 	"Plugins must be added before the following line
 	call vundle#end()            " required for vundle
@@ -247,6 +248,11 @@
     " preceding line best in a plugin but here for now.
 
     autocmd BufNewFile,BufRead *.coffee set filetype=coffee
+
+    " Autoformat rust code
+    let g:formatdef_rustfmt = '"rustfmt"'
+    let g:formatters_rust = ['rustfmt']
+    autocmd FileType rust autocmd BufWrite <buffer> :Autoformat
 " }
 
 " Key (re)Mappings {
