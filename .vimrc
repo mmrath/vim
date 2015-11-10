@@ -256,7 +256,8 @@
 " }
 
 " Key (re)Mappings {
-
+    " Remap leader key
+    let mapleader = "\<Space>"
 
     " Easier moving in tabs and windows
     " The lines conflict with the default digraph mapping of <C-K>
