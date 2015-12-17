@@ -8,7 +8,7 @@ IF NOT EXIST "%APP_PATH%" (
 ) ELSE (
     echo "Updating installation"
     chdir /d "%APP_PATH%"
-    call git pull
+    rem call git pull
 )
 call mklink "%HOME%\.vimrc" "%APP_PATH%\.vimrc"
 call mklink /J "%HOME%\.vim" "%APP_PATH%\.vim"
