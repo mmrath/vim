@@ -297,6 +297,17 @@
 	nnoremap <Leader>8 :8b<CR>
 	nnoremap <Leader>9 :9b<CR>
 	nnoremap <Leader>0 :10b<CR>
+    
+    " Type <Space>w to save file
+    nnoremap <Leader>w :w<CR>
+    
+    "Copy & paste to system clipboard with <Space>p and <Space>y
+    vmap <Leader>y "+y
+    vmap <Leader>d "+d
+    nmap <Leader>p "+p
+    nmap <Leader>P "+P
+    vmap <Leader>p "+p
+    vmap <Leader>P "+P
 
     " Most prefer to toggle search highlighting rather than clear the current
     " search results
@@ -435,7 +446,7 @@
 		if LINUX() && has("gui_running")
 			set guifont=Andale\ Mono\ Regular\ 12,Menlo\ Regular\ 11,Consolas\ Regular\ 12,Courier\ New\ Regular\ 14
 		elseif OSX() && has("gui_running")
-			set guifont=Andale\ Mono\ Regular:h12,Menlo\ Regular:h11,Consolas\ Regular:h12,Courier\ New\ Regular:h14
+			set guifont=Source\ Code\ Pro:h12,Andale\ Mono\ Regular:h12,Menlo\ Regular:h11,Consolas\ Regular:h12,Courier\ New\ Regular:h14
 		elseif WINDOWS() && has("gui_running")
 			set guifont=Andale_Mono:h10,Menlo:h10,Consolas:h10,Courier_New:h10
 		endif
