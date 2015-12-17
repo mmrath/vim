@@ -177,7 +177,7 @@
 " }
 
 " Vim UI {
-    color Tomorrow-Night                   " Load a colorscheme
+    color molokai                   " Load a colorscheme
     set tabpagemax=15               " Only show 15 tabs
     set showmode                    " Display the current mode
 
@@ -222,7 +222,7 @@
     set scrolljump=5                " Lines to scroll when cursor leaves screen
     set scrolloff=3                 " Minimum lines to keep above and below cursor
     set list
-    set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
+    set listchars=tab:â€º\ ,trail:â€¢,extends:#,nbsp:. " Highlight problematic whitespace
 
 " }
 
@@ -419,8 +419,8 @@
             endif
             if !exists('g:airline_powerline_fonts')
                 " Use the default set of separators with a few customizations
-                let g:airline_left_sep='›'  " Slightly fancier than '>'
-                let g:airline_right_sep='‹' " Slightly fancier than '<'
+                let g:airline_left_sep='â€º'  " Slightly fancier than '>'
+                let g:airline_right_sep='â€¹' " Slightly fancier than '<'
             endif
         endif
     " }
