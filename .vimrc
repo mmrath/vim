@@ -87,6 +87,7 @@
 	Plugin 'nathanaelkane/vim-indent-guides'
 	Plugin 'scrooloose/syntastic'
 	Plugin 'tpope/vim-fugitive'
+    Plugin 'flazz/vim-colorschemes'
 
   " Auto completion
 	Plugin 'Shougo/neocomplete.vim.git'
@@ -176,7 +177,7 @@
 " }
 
 " Vim UI {
-    color solarized                 " Load a colorscheme
+    color molokai                   " Load a colorscheme
     set tabpagemax=15               " Only show 15 tabs
     set showmode                    " Display the current mode
 
@@ -425,7 +426,7 @@
         " Default in terminal vim is 'dark'
         if isdirectory(expand("~/.vim/bundle/vim-airline/"))
             if !exists('g:airline_theme')
-                let g:airline_theme = 'solarized'
+                " let g:airline_theme = 'solarized'
             endif
             if !exists('g:airline_powerline_fonts')
                 " Use the default set of separators with a few customizations
@@ -442,13 +443,13 @@
     " GVIM- (here instead of .gvimrc)
     if has('gui_running')
         set guioptions-=T           " Remove the toolbar
-        set lines=40                " 40 lines of text instead of 24
+        set lines=999 columns=999   " Maximize window
 		if LINUX() && has("gui_running")
 			set guifont=Andale\ Mono\ Regular\ 12,Menlo\ Regular\ 11,Consolas\ Regular\ 12,Courier\ New\ Regular\ 14
 		elseif OSX() && has("gui_running")
 			set guifont=Source\ Code\ Pro:h12,Andale\ Mono\ Regular:h12,Menlo\ Regular:h11,Consolas\ Regular:h12,Courier\ New\ Regular:h14
 		elseif WINDOWS() && has("gui_running")
-			set guifont=Andale_Mono:h10,Menlo:h10,Consolas:h10,Courier_New:h10
+			set guifont=Andale_Mono:h11,Menlo:h11,Consolas:h10,Courier_New:h10
 		endif
     else
         if &term == 'xterm' || &term == 'screen'
