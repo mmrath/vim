@@ -42,47 +42,47 @@
 " }
 
 " Vundle Configuration {
-	filetype off                  " required for vundle
+    filetype off                  " required for vundle
 
-	" set the runtime path to include Vundle and initialize
-	set rtp+=~/.vim/bundle/Vundle.vim
-	call vundle#begin()
+    " set the runtime path to include Vundle and initialize
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
 
-  " let Vundle manage Vundle, required
-	Plugin 'VundleVim/Vundle.vim'
+    " let Vundle manage Vundle, required
+    Plugin 'VundleVim/Vundle.vim'
 
-  " General plugins
-	Plugin 'scrooloose/nerdtree'
-	Plugin 'bling/vim-airline'
-	Plugin 'altercation/vim-colors-solarized'
-	Plugin 'ctrlpvim/ctrlp.vim'
-	Plugin 'bling/vim-bufferline'
-	Plugin 'powerline/fonts'
-	Plugin 'nathanaelkane/vim-indent-guides'
-	Plugin 'scrooloose/syntastic'
-	Plugin 'tpope/vim-fugitive'
+    " General plugins
+    Plugin 'scrooloose/nerdtree'
+    Plugin 'bling/vim-airline'
+    Plugin 'altercation/vim-colors-solarized'
+    Plugin 'ctrlpvim/ctrlp.vim'
+    Plugin 'bling/vim-bufferline'
+    Plugin 'powerline/fonts'
+    Plugin 'nathanaelkane/vim-indent-guides'
+    Plugin 'scrooloose/syntastic'
+    Plugin 'tpope/vim-fugitive'
     Plugin 'flazz/vim-colorschemes'
 
   " Auto completion
-	Plugin 'Shougo/neocomplete.vim.git'
-	Plugin 'Shougo/neosnippet'
-	Plugin 'Shougo/neosnippet-snippets'
-	Plugin 'honza/vim-snippets'
+    Plugin 'Shougo/neocomplete.vim.git'
+    Plugin 'Shougo/neosnippet'
+    Plugin 'Shougo/neosnippet-snippets'
+    Plugin 'honza/vim-snippets'
 
     " Programming
-	Plugin 'elzr/vim-json'
-	Plugin 'pangloss/vim-javascript'
-	Plugin 'amirh/HTML-AutoCloseTag'
-	Plugin 'hail2u/vim-css3-syntax'
-	Plugin 'rust-lang/rust.vim'
-	Plugin 'tpope/vim-markdown'
-	Plugin 'cespare/vim-toml'
-	Plugin 'fatih/vim-go'
+    Plugin 'elzr/vim-json'
+    Plugin 'pangloss/vim-javascript'
+    Plugin 'amirh/HTML-AutoCloseTag'
+    Plugin 'hail2u/vim-css3-syntax'
+    Plugin 'rust-lang/rust.vim'
+    Plugin 'tpope/vim-markdown'
+    Plugin 'cespare/vim-toml'
+    Plugin 'fatih/vim-go'
     Plugin 'Chiel92/vim-autoformat'
 
-	"Plugins must be added before the following line
-	call vundle#end()            " required for vundle
-	filetype plugin indent on    " required for vundle
+    "Plugins must be added before the following line
+    call vundle#end()            " required for vundle
+    filetype plugin indent on    " required for vundle
 " }
 
 
@@ -105,8 +105,8 @@
         endif
     endif
 
-	" Always switch to the current file directory
-	autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+    " Always switch to the current file directory
+    autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 
     set autowrite                       " Automatically write a file when leaving a modified buffer
     set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
@@ -224,7 +224,7 @@
     set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
     "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
 
-	" Remove trailing whitespaces and ^M chars
+    " Remove trailing whitespaces and ^M chars
     autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql,swift,sh,bat,vim autocmd BufWritePre <buffer> call StripTrailingWhitespace()
     "autocmd FileType go autocmd BufWritePre <buffer> Fmt
     autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
@@ -241,10 +241,10 @@
 
     " Easier moving in tabs and windows
     " The lines conflict with the default digraph mapping of <C-K>
-	map <C-J> <C-W>j<C-W>_
-	map <C-K> <C-W>k<C-W>_
-	map <C-L> <C-W>l<C-W>_
-	map <C-H> <C-W>h<C-W>_
+    map <C-J> <C-W>j<C-W>_
+    map <C-K> <C-W>k<C-W>_
+    map <C-L> <C-W>l<C-W>_
+    map <C-H> <C-W>h<C-W>_
 
     " Wrapped lines goes down/up to next row, rather than next line in file.
     noremap j gj
@@ -263,19 +263,19 @@
     nmap <leader>f9 :set foldlevel=9<CR>
 
 
-	" Mappings to access buffers by number
-	nnoremap <Leader>l :ls<CR>
-	nnoremap <Leader>bd :bd<CR>
-	nnoremap <Leader>1 :1b<CR>
-	nnoremap <Leader>2 :2b<CR>
-	nnoremap <Leader>3 :3b<CR>
-	nnoremap <Leader>4 :4b<CR>
-	nnoremap <Leader>5 :5b<CR>
-	nnoremap <Leader>6 :6b<CR>
-	nnoremap <Leader>7 :7b<CR>
-	nnoremap <Leader>8 :8b<CR>
-	nnoremap <Leader>9 :9b<CR>
-	nnoremap <Leader>0 :10b<CR>
+    " Mappings to access buffers by number
+    nnoremap <Leader>l :ls<CR>
+    nnoremap <Leader>bd :bd<CR>
+    nnoremap <Leader>1 :1b<CR>
+    nnoremap <Leader>2 :2b<CR>
+    nnoremap <Leader>3 :3b<CR>
+    nnoremap <Leader>4 :4b<CR>
+    nnoremap <Leader>5 :5b<CR>
+    nnoremap <Leader>6 :6b<CR>
+    nnoremap <Leader>7 :7b<CR>
+    nnoremap <Leader>8 :8b<CR>
+    nnoremap <Leader>9 :9b<CR>
+    nnoremap <Leader>0 :10b<CR>
 
     " Type <Space>w to save file
     nnoremap <Leader>w :w<CR>
@@ -423,13 +423,13 @@
     if has('gui_running')
         set guioptions-=T           " Remove the toolbar
         set lines=999 columns=999   " Maximize window
-		if LINUX() && has("gui_running")
-			set guifont=Andale\ Mono\ Regular\ 12,Menlo\ Regular\ 11,Consolas\ Regular\ 12,Courier\ New\ Regular\ 14
-		elseif OSX() && has("gui_running")
-			set guifont=Source\ Code\ Pro:h12,Andale\ Mono\ Regular:h12,Menlo\ Regular:h11,Consolas\ Regular:h12,Courier\ New\ Regular:h14
-		elseif WINDOWS() && has("gui_running")
-			set guifont=Andale_Mono:h11,Menlo:h11,Consolas:h10,Courier_New:h10
-		endif
+        if LINUX() && has("gui_running")
+            set guifont=Andale\ Mono\ Regular\ 12,Menlo\ Regular\ 11,Consolas\ Regular\ 12,Courier\ New\ Regular\ 14
+        elseif OSX() && has("gui_running")
+            set guifont=Source\ Code\ Pro:h12,Andale\ Mono\ Regular:h12,Menlo\ Regular:h11,Consolas\ Regular:h12,Courier\ New\ Regular:h14
+        elseif WINDOWS() && has("gui_running")
+            set guifont=Andale_Mono:h11,Menlo:h11,Consolas:h10,Courier_New:h10
+        endif
     else
         if &term == 'xterm' || &term == 'screen'
             set t_Co=256            " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
