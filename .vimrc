@@ -1,32 +1,6 @@
 " Modeline and Notes {
-" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
-"
-"                    __ _ _____              _
-"         ___ _ __  / _/ |___ /      __   __(_)_ __ ___
-"        / __| '_ \| |_| | |_ \ _____\ \ / /| | '_ ` _ \
-"        \__ \ |_) |  _| |___) |_____|\ V / | | | | | | |
-"        |___/ .__/|_| |_|____/        \_/  |_|_| |_| |_|
-"            |_|
-"
-"   This is the personal .vimrc file of Steve Francia.
-"   While much of it is beneficial for general use, I would
-"   recommend picking out the parts you want and understand.
-"
-"   You can find me at http://spf13.com
-"
-"   Copyright 2014 Steve Francia
-"
-"   Licensed under the Apache License, Version 2.0 (the "License");
-"   you may not use this file except in compliance with the License.
-"   You may obtain a copy of the License at
-"
-"       http://www.apache.org/licenses/LICENSE-2.0
-"
-"   Unless required by applicable law or agreed to in writing, software
-"   distributed under the License is distributed on an "AS IS" BASIS,
-"   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-"   See the License for the specific language governing permissions and
-"   limitations under the License.
+"   Mostly copied from http://spf13.com and other places in the internet
+"   Feel free to copy
 " }
 
 " Environment {
@@ -114,20 +88,6 @@
 
 " General {
 
-    set background=dark         " Assume a dark background
-
-    " Allow to trigger background
-    function! ToggleBG()
-        let s:tbg = &background
-        " Inversion
-        if s:tbg == "dark"
-            set background=light
-        else
-            set background=dark
-        endif
-    endfunction
-    noremap <leader>bg :call ToggleBG()<CR>
-
     " if !has('gui')
         "set term=$TERM          " Make arrow and other keys work
     " endif
@@ -145,17 +105,15 @@
         endif
     endif
 
-
 	" Always switch to the current file directory
 	autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
-
 
     set autowrite                       " Automatically write a file when leaving a modified buffer
     set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
     set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
     set virtualedit=onemore             " Allow for cursor beyond last character
     set history=1000                    " Store a ton of history (default is 20)
-    set spell                           " Spell checking on
+    set nospell                           " Spell checking on/off
     set hidden                          " Allow buffer switching without saving
     set iskeyword-=.                    " '.' is an end of word designator
     set iskeyword-=#                    " '#' is an end of word designator
@@ -171,13 +129,38 @@
             set undofile                " So is persistent undo ...
             set undolevels=1000         " Maximum number of changes that can be undone
             set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
-        endif
+        end
     " }
 
 " }
 
 " Vim UI {
-    color molokai                   " Load a colorscheme
+
+    " Allow to trigger background
+    function! ToggleBG()
+        let s:tbg = &background
+        " Inversion
+        if s:tbg == "dark"
+            set background=light
+        else
+            set background=dark
+        endif
+    endfunction
+    noremap <leader>bg :call ToggleBG()<CR>
+
+    if has('gui_running')
+        set background=light         " Assume a dark background
+        color beauty256                   " Load a colorscheme
+        " color editplus                   " Load a colorscheme
+        " color simple256                   " Load a colorscheme
+        " color mac_classic                   " Load a colorscheme
+        " color github                   " Load a colorscheme
+    else
+        set background=dark         " Assume a dark background
+        color jellybeans                   " Load a colorscheme
+        " color inkpot                   " Load a colorscheme
+
+    endif
     set tabpagemax=15               " Only show 15 tabs
     set showmode                    " Display the current mode
 
@@ -222,7 +205,7 @@
     set scrolljump=5                " Lines to scroll when cursor leaves screen
     set scrolloff=3                 " Minimum lines to keep above and below cursor
     set list
-    set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
+    set listchars=tab:›\ ,trail:•,extends:»,precedes:«,nbsp:. " Highlight problematic whitespace
 
 " }
 
@@ -242,7 +225,7 @@
     "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
 
 	" Remove trailing whitespaces and ^M chars
-    autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> call StripTrailingWhitespace()
+    autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql,swift,sh,bat,vim autocmd BufWritePre <buffer> call StripTrailingWhitespace()
     "autocmd FileType go autocmd BufWritePre <buffer> Fmt
     autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
     autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2
@@ -250,10 +233,6 @@
 
     autocmd BufNewFile,BufRead *.coffee set filetype=coffee
 
-    " Autoformat rust code
-    let g:formatdef_rustfmt = '"rustfmt"'
-    let g:formatters_rust = ['rustfmt']
-    autocmd FileType rust autocmd BufWrite <buffer> :Autoformat
 " }
 
 " Key (re)Mappings {
@@ -284,7 +263,6 @@
     nmap <leader>f9 :set foldlevel=9<CR>
 
 
-
 	" Mappings to access buffers by number
 	nnoremap <Leader>l :ls<CR>
 	nnoremap <Leader>bd :bd<CR>
@@ -298,10 +276,10 @@
 	nnoremap <Leader>8 :8b<CR>
 	nnoremap <Leader>9 :9b<CR>
 	nnoremap <Leader>0 :10b<CR>
-    
+
     " Type <Space>w to save file
     nnoremap <Leader>w :w<CR>
-    
+
     "Copy & paste to system clipboard with <Space>p and <Space>y
     vmap <Leader>y "+y
     vmap <Leader>d "+d
@@ -313,8 +291,6 @@
     " Most prefer to toggle search highlighting rather than clear the current
     " search results
     nmap <silent> <leader>/ :set invhlsearch<CR>
-
-
 
     " Find merge conflict markers
     map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
@@ -432,6 +408,9 @@
                 " Use the default set of separators with a few customizations
                 let g:airline_left_sep='›'  " Slightly fancier than '>'
                 let g:airline_right_sep='‹' " Slightly fancier than '<'
+            endif
+            if has('gui_running')
+                let g:airline#extensions#tabline#enabled = 1
             endif
         endif
     " }
