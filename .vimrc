@@ -54,16 +54,15 @@
     " General plugins
     Plugin 'scrooloose/nerdtree'
     Plugin 'bling/vim-airline'
-    Plugin 'altercation/vim-colors-solarized'
     Plugin 'ctrlpvim/ctrlp.vim'
     Plugin 'bling/vim-bufferline'
     Plugin 'powerline/fonts'
     Plugin 'nathanaelkane/vim-indent-guides'
     Plugin 'scrooloose/syntastic'
     Plugin 'tpope/vim-fugitive'
-    Plugin 'flazz/vim-colorschemes'
+    Plugin 'tomtom/tcomment_vim'
 
-  " Auto completion
+    " Auto completion
     Plugin 'Shougo/neocomplete.vim.git'
     Plugin 'Shougo/neosnippet'
     Plugin 'Shougo/neosnippet-snippets'
@@ -78,7 +77,20 @@
     Plugin 'tpope/vim-markdown'
     Plugin 'cespare/vim-toml'
     Plugin 'fatih/vim-go'
+    Plugin 'keith/swift.vim'
     Plugin 'Chiel92/vim-autoformat'
+
+    " Color schemes
+    Plugin 'google/vim-colorscheme-primary'
+    Plugin 'tomasr/molokai'
+    Plugin 'altercation/vim-colors-solarized'
+    Plugin 'sickill/vim-monokai'
+    Plugin 'w0ng/vim-hybrid'
+    Plugin 'vim-scripts/beauty256'
+    Plugin 'mkarmona/materialbox'
+    Plugin 'nanotech/jellybeans.vim'
+    Plugin 'wimstefan/Lightning'
+
 
     "Plugins must be added before the following line
     call vundle#end()            " required for vundle
@@ -150,15 +162,13 @@
 
     if has('gui_running')
         set background=light         " Assume a dark background
-        color beauty256                   " Load a colorscheme
-        " color editplus                   " Load a colorscheme
+        color primary                   " Load a colorscheme
+        " color beauty256                   " Load a colorscheme
         " color simple256                   " Load a colorscheme
-        " color mac_classic                   " Load a colorscheme
-        " color github                   " Load a colorscheme
     else
         set background=dark         " Assume a dark background
-        color jellybeans                   " Load a colorscheme
-        " color inkpot                   " Load a colorscheme
+        " color jellybeans                   " Load a colorscheme
+        color primary                   " Load a colorscheme
 
     endif
     set tabpagemax=15               " Only show 15 tabs
@@ -237,7 +247,7 @@
 
 " Key (re)Mappings {
     " Remap leader key
-    let mapleader = "\<Space>"
+    let mapleader = "\\"
 
     " Easier moving in tabs and windows
     " The lines conflict with the default digraph mapping of <C-K>
