@@ -45,56 +45,70 @@
     filetype off                  " required for vundle
 
     " set the runtime path to include Vundle and initialize
-    set rtp+=~/.vim/bundle/Vundle.vim
-    call vundle#begin()
+    if has('vim_starting')
+        if &compatible
+            set nocompatible               " Be iMproved
+        endif
+
+        " Required:
+        set runtimepath+=~/.vim/bundle/neobundle.vim/
+    endif
+
+    " Required:
+    call neobundle#begin(expand('~/.vim/bundle/'))
+
+    " Let NeoBundle manage NeoBundle
+    " Required:
+    NeoBundleFetch 'Shougo/neobundle.vim'
 
     " let Vundle manage Vundle, required
-    Plugin 'VundleVim/Vundle.vim'
+    NeoBundle 'VundleVim/Vundle.vim'
 
     " General plugins
-    Plugin 'scrooloose/nerdtree'
-    Plugin 'bling/vim-airline'
-    Plugin 'ctrlpvim/ctrlp.vim'
-    Plugin 'bling/vim-bufferline'
-    Plugin 'powerline/fonts'
-    Plugin 'nathanaelkane/vim-indent-guides'
-    Plugin 'scrooloose/syntastic'
-    Plugin 'tpope/vim-fugitive'
-    Plugin 'tomtom/tcomment_vim'
+    NeoBundle 'scrooloose/nerdtree'
+    NeoBundle 'bling/vim-airline'
+    NeoBundle 'ctrlpvim/ctrlp.vim'
+    NeoBundle 'bling/vim-bufferline'
+    NeoBundle 'powerline/fonts'
+    NeoBundle 'nathanaelkane/vim-indent-guides'
+    NeoBundle 'scrooloose/syntastic'
+    NeoBundle 'tpope/vim-fugitive'
+    NeoBundle 'tomtom/tcomment_vim'
 
     " Auto completion
-    Plugin 'Shougo/neocomplete.vim.git'
-    Plugin 'Shougo/neosnippet'
-    Plugin 'Shougo/neosnippet-snippets'
-    Plugin 'honza/vim-snippets'
+    NeoBundle 'Shougo/neocomplete.vim.git'
+    NeoBundle 'Shougo/neosnippet'
+    NeoBundle 'Shougo/neosnippet-snippets'
+    NeoBundle 'honza/vim-snippets'
 
     " Programming
-    Plugin 'elzr/vim-json'
-    Plugin 'pangloss/vim-javascript'
-    Plugin 'amirh/HTML-AutoCloseTag'
-    Plugin 'hail2u/vim-css3-syntax'
-    Plugin 'rust-lang/rust.vim'
-    Plugin 'tpope/vim-markdown'
-    Plugin 'cespare/vim-toml'
-    Plugin 'fatih/vim-go'
-    Plugin 'keith/swift.vim'
-    Plugin 'Chiel92/vim-autoformat'
+    NeoBundle 'elzr/vim-json'
+    NeoBundle 'pangloss/vim-javascript'
+    NeoBundle 'amirh/HTML-AutoCloseTag'
+    NeoBundle 'hail2u/vim-css3-syntax'
+    NeoBundle 'rust-lang/rust.vim'
+    NeoBundle 'tpope/vim-markdown'
+    NeoBundle 'cespare/vim-toml'
+    NeoBundle 'fatih/vim-go'
+    NeoBundle 'keith/swift.vim'
+    NeoBundle 'Chiel92/vim-autoformat'
 
     " Color schemes
-    Plugin 'google/vim-colorscheme-primary'
-    Plugin 'tomasr/molokai'
-    Plugin 'altercation/vim-colors-solarized'
-    Plugin 'sickill/vim-monokai'
-    Plugin 'w0ng/vim-hybrid'
-    Plugin 'vim-scripts/beauty256'
-    Plugin 'mkarmona/materialbox'
-    Plugin 'nanotech/jellybeans.vim'
-    Plugin 'wimstefan/Lightning'
+    NeoBundle 'google/vim-colorscheme-primary'
+    NeoBundle 'tomasr/molokai'
+    NeoBundle 'altercation/vim-colors-solarized'
+    NeoBundle 'sickill/vim-monokai'
+    NeoBundle 'w0ng/vim-hybrid'
+    NeoBundle 'vim-scripts/beauty256'
+    NeoBundle 'mkarmona/materialbox'
+    NeoBundle 'nanotech/jellybeans.vim'
+    NeoBundle 'wimstefan/Lightning'
 
 
     "Plugins must be added before the following line
     call vundle#end()            " required for vundle
     filetype plugin indent on    " required for vundle
+    NeoBundleCheck
 " }
 
 
