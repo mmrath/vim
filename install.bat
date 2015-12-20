@@ -17,12 +17,12 @@ IF NOT EXIST "%APP_PATH%\.vim\bundle" (
     call mkdir "%APP_PATH%\.vim\bundle"
 )
 
-IF NOT EXIST "%HOME%/.vim/bundle/Vundle.vim" (
-    call git clone https://github.com/VundleVim/Vundle.vim.git %APP_PATH%/.vim/bundle/Vundle.vim
+IF NOT EXIST "%HOME%/.vim/bundle/neobundle.vim/.git" (
+    call git clone https://github.com/Shougo/neobundle.vim %APP_PATH%/.vim/bundle/neobundle.vim
 ) ELSE (
-  call cd "%HOME%/.vim/bundle/Vundle.vim"
+  call cd "%HOME%/.vim/bundle/neobundle.vim"
   call git pull
   call cd %APP_PATH%
 )
 
-call vim +PluginInstall +PluginClean +qall
+call vim +NeoBundleInstall +NeoBundleClean +qall

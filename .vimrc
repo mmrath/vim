@@ -41,15 +41,14 @@
 
 " }
 
-" Vundle Configuration {
-    filetype off                  " required for vundle
+" neobundle Configuration {
+    filetype off                  " required for neobundle
 
-    " set the runtime path to include Vundle and initialize
+    " set the runtime path to include neobundle and initialize
     if has('vim_starting')
         if &compatible
             set nocompatible               " Be iMproved
         endif
-
         " Required:
         set runtimepath+=~/.vim/bundle/neobundle.vim/
     endif
@@ -61,8 +60,8 @@
     " Required:
     NeoBundleFetch 'Shougo/neobundle.vim'
 
-    " let Vundle manage Vundle, required
-    NeoBundle 'VundleVim/Vundle.vim'
+    " let neobundle manage neobundle, required
+    NeoBundle 'neobundleVim/neobundle.vim'
 
     " General plugins
     NeoBundle 'scrooloose/nerdtree'
@@ -106,8 +105,8 @@
 
 
     "Plugins must be added before the following line
-    call vundle#end()            " required for vundle
-    filetype plugin indent on    " required for vundle
+    call neobundle#end()            " required for neobundle
+    filetype plugin indent on    " required for neobundle
     NeoBundleCheck
 " }
 

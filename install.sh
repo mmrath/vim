@@ -4,7 +4,10 @@ APP_PATH=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 lnif() {
     if [ ! -e "$2" ]; then
+        echo "INFO: Creating link $2 to $1"
         ln -sf "$1" "$2"
+    else
+        echo "INFO: Link $2 already exists."
     fi
     ret="$?"
 }
@@ -25,7 +28,7 @@ if [ ! -e $APP_PATH/.vim/bundle ];then
 fi
 
 NEOBUNDLE_PATH=$HOME/.vim/bundle/neobundle.vim
-if [ "$(ls -A $NEOBUNDLE_PATH)" ]; then
+if [ -d $NEOBUNDLE_PATH/.git ]; then
   #Not Empty
   cd "$NEOBUNDLE_PATH"
   git pull
