@@ -14,12 +14,12 @@ nerdtree
 rust.vim
 swift.vim
 syntastic
-tcomment_vim
 vim-airline
 vim-autoformat
 vim-bufferline
 vim-colors-solarized
 vim-colorscheme-primary
+vim-commentary
 vim-css3-syntax
 vim-fugitive
 vim-go

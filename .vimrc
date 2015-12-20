@@ -72,7 +72,7 @@
     NeoBundle 'nathanaelkane/vim-indent-guides'
     NeoBundle 'scrooloose/syntastic'
     NeoBundle 'tpope/vim-fugitive'
-    NeoBundle 'tomtom/tcomment_vim'
+    NeoBundle 'tpope/vim-commentary'
 
     " Auto completion
     NeoBundle 'Shougo/neocomplete.vim.git'
