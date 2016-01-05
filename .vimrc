@@ -180,8 +180,8 @@
         " color simple256                   " Load a colorscheme
     else
         set background=dark         " Assume a dark background
-        " color jellybeans                   " Load a colorscheme
-        color primary                   " Load a colorscheme
+        color jellybeans                   " Load a colorscheme
+        " color primary                   " Load a colorscheme
 
     endif
     set tabpagemax=15               " Only show 15 tabs
