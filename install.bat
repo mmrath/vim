@@ -10,6 +10,7 @@ IF NOT EXIST "%APP_PATH%" (
     chdir /d "%APP_PATH%"
     rem call git pull
 )
+
 call mklink "%HOME%\.vimrc" "%APP_PATH%\.vimrc"
 call mklink /J "%HOME%\.vim" "%APP_PATH%\.vim"
 

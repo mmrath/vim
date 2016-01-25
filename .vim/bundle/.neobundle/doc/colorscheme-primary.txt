@@ -1,4 +1,4 @@
-*colorscheme-primary.txt*	Primary color scheme based on Google's colors
+﻿*colorscheme-primary.txt*	Primary color scheme based on Google's colors
                                *colorscheme-primary.txt* *colorscheme-primary*
 
 ==============================================================================
