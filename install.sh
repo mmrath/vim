@@ -24,7 +24,7 @@ lnif "$APP_PATH/.vimrc" "$HOME/.vimrc"
 lnif "$APP_PATH/.vim" "$HOME/.vim"
 
 if [ ! -e $APP_PATH/.vim/bundle ];then
-    mkdir -p "%APP_PATH%\.vim\bundle"
+    mkdir -p "$APP_PATH\.vim\bundle"
 fi
 
 NEOBUNDLE_PATH=$HOME/.vim/bundle/neobundle.vim
