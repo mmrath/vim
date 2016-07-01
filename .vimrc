@@ -65,7 +65,8 @@
 
     " General plugins
     NeoBundle 'scrooloose/nerdtree'
-    NeoBundle 'bling/vim-airline'
+    NeoBundle 'vim-airline/vim-airline'
+    NeoBundle 'vim-airline/vim-airline-themes'
     NeoBundle 'ctrlpvim/ctrlp.vim'
     NeoBundle 'bling/vim-bufferline'
     NeoBundle 'powerline/fonts'
