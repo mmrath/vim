@@ -11,10 +11,10 @@ neocomplete.vim
 neosnippet
 neosnippet-snippets
 nerdtree
-rust.vim
 swift.vim
 syntastic
 vim-airline
+vim-airline-themes
 vim-autoformat
 vim-bufferline
 vim-colors-solarized

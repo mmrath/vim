@@ -86,7 +86,6 @@
     NeoBundle 'pangloss/vim-javascript'
     NeoBundle 'amirh/HTML-AutoCloseTag'
     NeoBundle 'hail2u/vim-css3-syntax'
-    NeoBundle 'rust-lang/rust.vim'
     NeoBundle 'tpope/vim-markdown'
     NeoBundle 'cespare/vim-toml'
     NeoBundle 'fatih/vim-go'
@@ -122,6 +121,8 @@
     set mouse=a                 " Automatically enable mouse usage
     set mousehide               " Hide the mouse cursor while typing
     scriptencoding utf-8
+    set encoding=utf-8
+
 
     if has('clipboard')
         if has('unnamedplus')  " When possible use + register for copy-paste
@@ -176,8 +177,8 @@
 
     if has('gui_running')
         set background=light         " Assume a dark background
-        color primary                   " Load a colorscheme
-        " color beauty256                   " Load a colorscheme
+        " color primary                   " Load a colorscheme
+        color beauty256                   " Load a colorscheme
         " color simple256                   " Load a colorscheme
     else
         set background=dark         " Assume a dark background
@@ -230,7 +231,6 @@
     set scrolloff=3                 " Minimum lines to keep above and below cursor
     set list
     set listchars=tab:›\ ,trail:•,extends:»,precedes:«,nbsp:. " Highlight problematic whitespace
-
 " }
 
 " Formatting {
@@ -420,22 +420,12 @@
 
     " vim-airline {
         " Set configuration options for the statusline plugin vim-airline.
-        
         " Needs a powerline enabled font
-        let g:airline_powerline_fonts=1
-        let g:airline#extensions#tabline#enabled = 1
-        
         " See `:echo g:airline_theme_map` for some more choices
         " Default in terminal vim is 'dark'
         if isdirectory(expand("~/.vim/bundle/vim-airline/"))
-            if !exists('g:airline_theme')
-                " let g:airline_theme = 'solarized'
-            endif
-            if !exists('g:airline_powerline_fonts')
-                " Use the default set of separators with a few customizations
-                let g:airline_left_sep='›'  " Slightly fancier than '>'
-                let g:airline_right_sep='‹' " Slightly fancier than '<'
-            endif
+            let g:airline_powerline_fonts=1
+            let g:airline#extensions#tabline#enabled = 1
         endif
     " }
 
@@ -452,7 +442,7 @@
         elseif OSX() && has("gui_running")
             set guifont=Source\ Code\ Pro:h12,Andale\ Mono\ Regular:h12,Menlo\ Regular:h11,Consolas\ Regular:h12,Courier\ New\ Regular:h14
         elseif WINDOWS() && has("gui_running")
-            set guifont=Andale_Mono:h11,Menlo:h11,Consolas:h10,Courier_New:h10
+            set guifont=Source_Code_Pro:h12,Andale_Mono:h12,Menlo:h12,Consolas:h11,Courier_New:h10
         endif
     else
         if &term == 'xterm' || &term == 'screen'
