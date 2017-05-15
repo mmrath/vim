@@ -41,73 +41,65 @@
 
 " }
 
-" neobundle Configuration {
-    filetype off                  " required for neobundle
+" dein Configuration {
+    filetype off                  " required for dein
 
-    " set the runtime path to include neobundle and initialize
-    if has('vim_starting')
+    " set the runtime path to include dein and initialize
         if &compatible
             set nocompatible               " Be iMproved
         endif
         " Required:
-        set runtimepath+=~/.vim/bundle/neobundle.vim/
+        set runtimepath+=~/.vim/bundle/repos/github.com/Shougo/dein.vim
+
+    if dein#load_state(expand('~/.vim/bundle'))
+        call dein#begin(expand('~/.vim/bundle'))
+        call dein#add('Shougo/dein.vim')
+
+        " General plugins
+        call dein#add('scrooloose/nerdtree')
+        call dein#add('vim-airline/vim-airline')
+        call dein#add('vim-airline/vim-airline-themes')
+        call dein#add('ctrlpvim/ctrlp.vim')
+        call dein#add('bling/vim-bufferline')
+        call dein#add('powerline/fonts')
+        call dein#add('nathanaelkane/vim-indent-guides')
+        call dein#add('scrooloose/syntastic')
+        call dein#add('tpope/vim-fugitive')
+        call dein#add('tpope/vim-commentary')
+
+        " Auto completion
+        call dein#add('Shougo/neocomplete.vim.git')
+        call dein#add('Shougo/neosnippet')
+        call dein#add('Shougo/neosnippet-snippets')
+        call dein#add('honza/vim-snippets')
+
+        " Programming
+        call dein#add('elzr/vim-json')
+        call dein#add('pangloss/vim-javascript')
+        call dein#add('amirh/HTML-AutoCloseTag')
+        call dein#add('hail2u/vim-css3-syntax')
+        call dein#add('tpope/vim-markdown')
+        call dein#add('cespare/vim-toml')
+        call dein#add('Chiel92/vim-autoformat')
+
+        " Color schemes
+        call dein#add('google/vim-colorscheme-primary')
+        call dein#add('tomasr/molokai')
+        call dein#add('altercation/vim-colors-solarized')
+        call dein#add('sickill/vim-monokai')
+        call dein#add('w0ng/vim-hybrid')
+        call dein#add('vim-scripts/beauty256')
+        call dein#add('mkarmona/materialbox')
+        call dein#add('nanotech/jellybeans.vim')
+        call dein#add('wimstefan/Lightning')
+
+
+        "Plugins must be added before the following line
+        call dein#end()
+        call dein#save_state()
     endif
-
-    " Required:
-    call neobundle#begin(expand('~/.vim/bundle/'))
-
-    " Let NeoBundle manage NeoBundle
-    " Required:
-    NeoBundleFetch 'Shougo/neobundle.vim'
-
-    " let neobundle manage neobundle, required
-    NeoBundle 'neobundleVim/neobundle.vim'
-
-    " General plugins
-    NeoBundle 'scrooloose/nerdtree'
-    NeoBundle 'vim-airline/vim-airline'
-    NeoBundle 'vim-airline/vim-airline-themes'
-    NeoBundle 'ctrlpvim/ctrlp.vim'
-    NeoBundle 'bling/vim-bufferline'
-    NeoBundle 'powerline/fonts'
-    NeoBundle 'nathanaelkane/vim-indent-guides'
-    NeoBundle 'scrooloose/syntastic'
-    NeoBundle 'tpope/vim-fugitive'
-    NeoBundle 'tpope/vim-commentary'
-
-    " Auto completion
-    NeoBundle 'Shougo/neocomplete.vim.git'
-    NeoBundle 'Shougo/neosnippet'
-    NeoBundle 'Shougo/neosnippet-snippets'
-    NeoBundle 'honza/vim-snippets'
-
-    " Programming
-    NeoBundle 'elzr/vim-json'
-    NeoBundle 'pangloss/vim-javascript'
-    NeoBundle 'amirh/HTML-AutoCloseTag'
-    NeoBundle 'hail2u/vim-css3-syntax'
-    NeoBundle 'tpope/vim-markdown'
-    NeoBundle 'cespare/vim-toml'
-    NeoBundle 'fatih/vim-go'
-    NeoBundle 'keith/swift.vim'
-    NeoBundle 'Chiel92/vim-autoformat'
-
-    " Color schemes
-    NeoBundle 'google/vim-colorscheme-primary'
-    NeoBundle 'tomasr/molokai'
-    NeoBundle 'altercation/vim-colors-solarized'
-    NeoBundle 'sickill/vim-monokai'
-    NeoBundle 'w0ng/vim-hybrid'
-    NeoBundle 'vim-scripts/beauty256'
-    NeoBundle 'mkarmona/materialbox'
-    NeoBundle 'nanotech/jellybeans.vim'
-    NeoBundle 'wimstefan/Lightning'
-
-
-    "Plugins must be added before the following line
-    call neobundle#end()            " required for neobundle
-    filetype plugin indent on    " required for neobundle
-    NeoBundleCheck
+    filetype plugin indent on    " required for dein
+    syntax enable
 " }
 
 
@@ -377,7 +369,7 @@
     " }
 
     " NerdTree {
-        if isdirectory(expand("~/.vim/bundle/nerdtree"))
+        if isdirectory(expand("~/.vim/bundle/repos/github.com/scrooloose/nerdtree"))
             map <C-e> <plug>NERDTreeTabsToggle<CR>
             map <leader>e :NERDTreeFind<CR>
             nmap <leader>nt :NERDTreeFind<CR>
@@ -394,7 +386,7 @@
 
 
     " Fugitive {
-        if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
+        if isdirectory(expand("~/.vim/bundle/repos/github.com/tpope/vim-fugitive/"))
             nnoremap <silent> <leader>gs :Gstatus<CR>
             nnoremap <silent> <leader>gd :Gdiff<CR>
             nnoremap <silent> <leader>gc :Gcommit<CR>
@@ -411,7 +403,7 @@
     "}
 
     " indent_guides {
-        if isdirectory(expand("~/.vim/bundle/vim-indent-guides/"))
+        if isdirectory(expand("~/.vim/bundle/repos/github.com/nathanaelkane/vim-indent-guides/"))
             let g:indent_guides_start_level = 2
             let g:indent_guides_guide_size = 1
             let g:indent_guides_enable_on_vim_startup = 1
@@ -423,7 +415,7 @@
         " Needs a powerline enabled font
         " See `:echo g:airline_theme_map` for some more choices
         " Default in terminal vim is 'dark'
-        if isdirectory(expand("~/.vim/bundle/vim-airline/"))
+        if isdirectory(expand("~/.vim/bundle/repos/github.com/vim-airline/vim-airline/"))
             let g:airline_powerline_fonts=1
             let g:airline#extensions#tabline#enabled = 1
         endif
@@ -435,7 +427,7 @@
 
     " GVIM- (here instead of .gvimrc)
     if has('gui_running')
-        set guioptions-=T           " Remove the toolbar
+        set guioptions=-T           " Remove the toolbar
         set lines=999 columns=999   " Maximize window
         if LINUX() && has("gui_running")
             set guifont=Andale\ Mono\ Regular\ 12,Menlo\ Regular\ 11,Consolas\ Regular\ 12,Courier\ New\ Regular\ 14

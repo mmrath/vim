@@ -14,14 +14,15 @@ IF NOT EXIST "%APP_PATH%" (
 call mklink "%HOME%\.vimrc" "%APP_PATH%\.vimrc"
 call mklink /J "%HOME%\.vim" "%APP_PATH%\.vim"
 
-IF NOT EXIST "%APP_PATH%\.vim\bundle" (
-    call mkdir "%APP_PATH%\.vim\bundle"
+@set DEIN_PATH="%APP_PATH%\.vim\repos\github.com\Shougo\dein.vim"
+IF NOT EXIST %DEIN_PATH% (
+    call mkdir %DEIN_PATH%
 )
 
-IF NOT EXIST "%HOME%/.vim/bundle/neobundle.vim/.git" (
-    call git clone https://github.com/Shougo/neobundle.vim %APP_PATH%/.vim/bundle/neobundle.vim
+IF NOT EXIST %DEIN_PATH%\.git (
+    call git clone https://github.com/Shougo/dein.vim %DEIN_PATH%
 ) ELSE (
-  call cd "%HOME%/.vim/bundle/neobundle.vim"
+  call cd %DEIN_PATH%
   call git pull
   call cd %APP_PATH%
 )
