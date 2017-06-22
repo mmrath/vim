@@ -81,6 +81,7 @@
         call dein#add('tpope/vim-markdown')
         call dein#add('cespare/vim-toml')
         call dein#add('Chiel92/vim-autoformat')
+        call dein#add('rust-lang/rust.vim')
 
         " Color schemes
         call dein#add('google/vim-colorscheme-primary')
@@ -434,7 +435,7 @@
         elseif OSX() && has("gui_running")
             set guifont=Source\ Code\ Pro:h12,Andale\ Mono\ Regular:h12,Menlo\ Regular:h11,Consolas\ Regular:h12,Courier\ New\ Regular:h14
         elseif WINDOWS() && has("gui_running")
-            set guifont=Source_Code_Pro:h12,Andale_Mono:h12,Menlo:h12,Consolas:h11,Courier_New:h10
+            set guifont=Source_Code_Pro:h11,Andale_Mono:h11,Menlo:h11,Consolas:h11,Courier_New:h10
         endif
     else
         if &term == 'xterm' || &term == 'screen'
