@@ -13,29 +13,18 @@ lnif() {
 }
 if [ -e "$APP_PATH" ]; then
     echo "Updating installation"
-    cd $APP_PATH
-    git pull
+    git -C $APP_PATH pull
 else
     echo "Path $APP_PATH does not exist"
     exit 0
 fi
 
-lnif "$APP_PATH/.vimrc" "$HOME/.vimrc"
-lnif "$APP_PATH/.vim" "$HOME/.vim"
-
-if [ ! -e $APP_PATH/.vim/bundle ];then
-    mkdir -p "$APP_PATH\.vim\bundle"
+DEIN_PATH=$APP_PATH/bundle/repos/github.com/Shougo/dein.vim
+if [ ! -e $DEIN_PATH ];then
+    mkdir -p "$DEIN_PATH"
+    git clone https://github.com/Shougo/dein.vim $DEIN_PATH
 fi
+git -C $DEIN_PATH pull
 
-NEOBUNDLE_PATH=$HOME/.vim/bundle/neobundle.vim
-if [ -d $NEOBUNDLE_PATH/.git ]; then
-  #Not Empty
-  cd "$NEOBUNDLE_PATH"
-  git pull
-  cd $APP_PATH
-else
-  #Empty
-  git clone https://github.com/Shougo/neobundle.vim $NEOBUNDLE_PATH
-fi
 
-vim +NeoBundleInstall +NeoBundleClean +qall
+echo "Update using -  :call dein#install()"

@@ -76,7 +76,6 @@
         " Programming
         call dein#add('elzr/vim-json')
         call dein#add('pangloss/vim-javascript')
-        call dein#add('amirh/HTML-AutoCloseTag')
         call dein#add('hail2u/vim-css3-syntax')
         call dein#add('tpope/vim-markdown')
         call dein#add('cespare/vim-toml')
@@ -93,6 +92,7 @@
         call dein#add('mkarmona/materialbox')
         call dein#add('nanotech/jellybeans.vim')
         call dein#add('wimstefan/Lightning')
+        call dein#add('morhetz/gruvbox')
 
 
         "Plugins must be added before the following line
@@ -168,17 +168,9 @@
     endfunction
     noremap <leader>bg :call ToggleBG()<CR>
 
-    if has('gui_running')
-        set background=light         " Assume a dark background
-        " color primary                   " Load a colorscheme
-        color beauty256                   " Load a colorscheme
-        " color simple256                   " Load a colorscheme
-    else
-        set background=dark         " Assume a dark background
-        color jellybeans                   " Load a colorscheme
-        " color primary                   " Load a colorscheme
+    set background=dark
+    colorscheme gruvbox
 
-    endif
     set tabpagemax=15               " Only show 15 tabs
     set showmode                    " Display the current mode
 
