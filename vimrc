@@ -425,9 +425,9 @@
         if LINUX() && has("gui_running")
             set guifont=Andale\ Mono\ Regular\ 12,Menlo\ Regular\ 11,Consolas\ Regular\ 12,Courier\ New\ Regular\ 14
         elseif OSX() && has("gui_running")
-            set guifont=Source\ Code\ Pro:h12,Andale\ Mono\ Regular:h12,Menlo\ Regular:h11,Consolas\ Regular:h12,Courier\ New\ Regular:h14
+            set guifont=Iosevka:h12,Source\ Code\ Pro:h12,Andale\ Mono\ Regular:h12,Menlo\ Regular:h11,Consolas\ Regular:h12,Courier\ New\ Regular:h14
         elseif WINDOWS() && has("gui_running")
-            set guifont=Source_Code_Pro:h11,Andale_Mono:h11,Menlo:h11,Consolas:h11,Courier_New:h10
+            set guifont=Iosevka:h11,Source_Code_Pro:h11,Andale_Mono:h11,Menlo:h11,Consolas:h11,Courier_New:h10
         endif
     else
         if &term == 'xterm' || &term == 'screen'
