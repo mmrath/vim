@@ -38,7 +38,6 @@
             inoremap <silent> <C-[>OC <RIGHT>
         endif
     " }
-
 " }
 
 " dein Configuration {
@@ -49,10 +48,17 @@
             set nocompatible               " Be iMproved
         endif
         " Required:
-        set runtimepath+=~/.vim/bundle/repos/github.com/Shougo/dein.vim
+        if WINDOWS()
+            let g:dein_install_path=fnamemodify(expand('<sfile>'), ':h').'\bundle\repos\github.com\Shougo\dein.vim'
+        else
+            let g:dein_install_path=fnamemodify(expand('<sfile>'), ':h').'/bundle/repos/github.com/Shougo/dein.vim
+        endif
+        set runtimepath+=expand(g:dein_install_path)
+        exec 'set runtimepath+='. fnameescape(g:dein_install_path)
 
-    if dein#load_state(expand('~/.vim/bundle'))
-        call dein#begin(expand('~/.vim/bundle'))
+
+    if dein#load_state(g:dein_install_path)
+        call dein#begin(g:dein_install_path)
         call dein#add('Shougo/dein.vim')
 
         " General plugins
@@ -114,7 +120,29 @@
     set mouse=a                 " Automatically enable mouse usage
     set mousehide               " Hide the mouse cursor while typing
     scriptencoding utf-8
-    set encoding=utf-8
+    " try to set encoding to utf-8
+    if WINDOWS()
+        " Be nice and check for multi_byte even if the config requires
+        " multi_byte support most of the time
+        if has('multi_byte')
+            " Windows cmd.exe still uses cp850. If Windows ever moved to
+            " Powershell as the primary terminal, this would be utf-8
+            set termencoding=cp850
+            " Let Vim use utf-8 internally, because many scripts require this
+            set encoding=utf-8
+            setglobal fileencoding=utf-8
+            " Windows has traditionally used cp1252, so it's probably wise to
+            " fallback into cp1252 instead of eg. iso-8859-15.
+            " Newer Windows files might contain utf-8 or utf-16 LE so we might
+            " want to try them first.
+            set fileencodings=ucs-bom,utf-8,utf-16le,cp1252,iso-8859-15
+        endif
+
+    else
+        " set default encoding to utf-8
+        set encoding=utf-8
+        set termencoding=utf-8
+    endif
 
 
     if has('clipboard')
@@ -362,45 +390,40 @@
     " }
 
     " NerdTree {
-        if isdirectory(expand("~/.vim/bundle/repos/github.com/scrooloose/nerdtree"))
-            map <C-e> <plug>NERDTreeTabsToggle<CR>
-            map <leader>e :NERDTreeFind<CR>
-            nmap <leader>nt :NERDTreeFind<CR>
+        map <C-e> <plug>NERDTreeTabsToggle<CR>
+        map <leader>e :NERDTreeFind<CR>
+        nmap <leader>nt :NERDTreeFind<CR>
 
-            let NERDTreeShowBookmarks=1
-            let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
-            let NERDTreeChDirMode=0
-            let NERDTreeQuitOnOpen=0
-            let NERDTreeMouseMode=2
-            let NERDTreeShowHidden=1
-            let NERDTreeKeepTreeInNewTab=1
-        endif
+        let NERDTreeShowBookmarks=1
+        let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
+        let NERDTreeChDirMode=0
+        let NERDTreeQuitOnOpen=0
+        let NERDTreeMouseMode=2
+        let NERDTreeShowHidden=1
+        let NERDTreeKeepTreeInNewTab=1
+
     " }
 
 
     " Fugitive {
-        if isdirectory(expand("~/.vim/bundle/repos/github.com/tpope/vim-fugitive/"))
-            nnoremap <silent> <leader>gs :Gstatus<CR>
-            nnoremap <silent> <leader>gd :Gdiff<CR>
-            nnoremap <silent> <leader>gc :Gcommit<CR>
-            nnoremap <silent> <leader>gb :Gblame<CR>
-            nnoremap <silent> <leader>gl :Glog<CR>
-            nnoremap <silent> <leader>gp :Git push<CR>
-            nnoremap <silent> <leader>gr :Gread<CR>
-            nnoremap <silent> <leader>gw :Gwrite<CR>
-            nnoremap <silent> <leader>ge :Gedit<CR>
-            " Mnemonic _i_nteractive
-            nnoremap <silent> <leader>gi :Git add -p %<CR>
-            nnoremap <silent> <leader>gg :SignifyToggle<CR>
-        endif
+        nnoremap <silent> <leader>gs :Gstatus<CR>
+        nnoremap <silent> <leader>gd :Gdiff<CR>
+        nnoremap <silent> <leader>gc :Gcommit<CR>
+        nnoremap <silent> <leader>gb :Gblame<CR>
+        nnoremap <silent> <leader>gl :Glog<CR>
+        nnoremap <silent> <leader>gp :Git push<CR>
+        nnoremap <silent> <leader>gr :Gread<CR>
+        nnoremap <silent> <leader>gw :Gwrite<CR>
+        nnoremap <silent> <leader>ge :Gedit<CR>
+        " Mnemonic _i_nteractive
+        nnoremap <silent> <leader>gi :Git add -p %<CR>
+        nnoremap <silent> <leader>gg :SignifyToggle<CR>
     "}
 
     " indent_guides {
-        if isdirectory(expand("~/.vim/bundle/repos/github.com/nathanaelkane/vim-indent-guides/"))
-            let g:indent_guides_start_level = 2
-            let g:indent_guides_guide_size = 1
-            let g:indent_guides_enable_on_vim_startup = 1
-        endif
+        let g:indent_guides_start_level = 2
+        let g:indent_guides_guide_size = 1
+        let g:indent_guides_enable_on_vim_startup = 1
     " }
 
     " vim-airline {
@@ -408,10 +431,8 @@
         " Needs a powerline enabled font
         " See `:echo g:airline_theme_map` for some more choices
         " Default in terminal vim is 'dark'
-        if isdirectory(expand("~/.vim/bundle/repos/github.com/vim-airline/vim-airline/"))
-            let g:airline_powerline_fonts=1
-            let g:airline#extensions#tabline#enabled = 1
-        endif
+        let g:airline_powerline_fonts=1
+        let g:airline#extensions#tabline#enabled = 1
     " }
 
 " }

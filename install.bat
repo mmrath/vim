@@ -3,18 +3,11 @@
 
 @set APP_PATH=%~dp0
 
-IF NOT EXIST "%APP_PATH%" (
-    echo "%APP_PATH% directory does not exist. Exiting installation"
-) ELSE (
-    echo "Updating installation"
-    chdir /d "%APP_PATH%"
-    rem call git pull
-)
+git pull
 
-call mklink "%HOME%\.vimrc" "%APP_PATH%\.vimrc"
-call mklink /J "%HOME%\.vim" "%APP_PATH%\.vim"
+call mklink /J "%HOME%\vimfiles" "%APP_PATH%"
 
-@set DEIN_PATH="%APP_PATH%\.vim\repos\github.com\Shougo\dein.vim"
+@set DEIN_PATH="%APP_PATH%\bundle\repos\github.com\Shougo\dein.vim"
 IF NOT EXIST %DEIN_PATH% (
     call mkdir %DEIN_PATH%
 )
@@ -22,9 +15,7 @@ IF NOT EXIST %DEIN_PATH% (
 IF NOT EXIST %DEIN_PATH%\.git (
     call git clone https://github.com/Shougo/dein.vim %DEIN_PATH%
 ) ELSE (
-  call cd %DEIN_PATH%
-  call git pull
-  call cd %APP_PATH%
+  call git -C %DEIN_PATH% pull
 )
 
-call vim +NeoBundleInstall +NeoBundleClean +qall
+echo "Update plugins using -  :call dein#install()"
