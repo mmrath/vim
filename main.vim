@@ -24,14 +24,15 @@
         endif
     " }
 
-    " Windows Compatible {
-        " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
-        " across (heterogeneous) systems easier.
-        if WINDOWS()
-          " set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
-        endif
-    " }
 
+    if WINDOWS()
+        let g:path_sep = ';'
+        let g:file_sep = '\'
+    else
+        let g:path_sep = ':'
+        let g:file_sep = '/'
+    endif
+    let g:config_main_home = fnamemodify(expand('<sfile>'), ':p:h:gs?\\?'. g:path_sep . '?')
     " Arrow Key Fix {
         " https://github.com/spf13/spf13-vim/issues/780
         if &term[:4] == "xterm" || &term[:5] == 'screen' || &term[:3] == 'rxvt'
@@ -49,16 +50,19 @@
         endif
         " Required:
         if WINDOWS()
-            let g:dein_install_path=fnamemodify(expand('<sfile>'), ':h').'\bundle\repos\github.com\Shougo\dein.vim'
+            let g:dein_install_path=g:config_main_home . '\bundle\repos\github.com\Shougo\dein.vim'
+            let g:dein_bundle_path=g:config_main_home . '\bundle'
         else
-            let g:dein_install_path=fnamemodify(expand('<sfile>'), ':h').'/bundle/repos/github.com/Shougo/dein.vim'
+            let g:dein_install_path=g:config_main_home . '/bundle/repos/github.com/Shougo/dein.vim'
+            let g:dein_bundle_path=g:config_main_home . '/bundle'
         endif
-        set runtimepath+=expand(g:dein_install_path)
+        " set runtimepath+=expand(g:dein_install_path)
         exec 'set runtimepath+='. fnameescape(g:dein_install_path)
 
 
-    if dein#load_state(g:dein_install_path)
-        call dein#begin(g:dein_install_path)
+    if dein#load_state(g:dein_bundle_path)
+        call dein#begin(g:dein_bundle_path)
+        call dein#add(g:dein_install_path)
         call dein#add('Shougo/dein.vim')
 
         " General plugins
@@ -90,14 +94,10 @@
 
         " Color schemes
         call dein#add('google/vim-colorscheme-primary')
-        call dein#add('tomasr/molokai')
         call dein#add('altercation/vim-colors-solarized')
         call dein#add('sickill/vim-monokai')
-        call dein#add('w0ng/vim-hybrid')
         call dein#add('vim-scripts/beauty256')
-        call dein#add('mkarmona/materialbox')
         call dein#add('nanotech/jellybeans.vim')
-        call dein#add('wimstefan/Lightning')
         call dein#add('morhetz/gruvbox')
 
 
@@ -231,6 +231,7 @@
     set backspace=indent,eol,start  " Backspace for dummies
     set linespace=0                 " No extra spaces between rows
     set number                      " Line numbers on
+    set relativenumber              " Relative line numbers
     set showmatch                   " Show matching brackets/parenthesis
     set incsearch                   " Find as you type search
     set hlsearch                    " Highlight search terms
